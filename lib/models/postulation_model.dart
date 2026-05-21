@@ -50,7 +50,7 @@ class PostulationModel {
       offerId: data['offerId'] as String? ?? '',
       status: data['status'] as String? ?? '',
       appliedAt: DateTime.parse(data['appliedAt'] as String? ?? ''),
-      pendingSync: false as bool? ?? false,
+      pendingSync: data['pendingSync'] as bool? ?? false,
     );
   }
 }

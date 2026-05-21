@@ -13,7 +13,6 @@ class CompanyModel {
     required this.pendingSync,
   });
 
-
   CompanyModel copyWith({
     String? nit,
     String? name,
@@ -31,12 +30,7 @@ class CompanyModel {
   }
 
   Map<String, dynamic> toFirestore() {
-    return {
-      'nit': nit,
-      'name': name,
-      'address': address,
-      'sector': sector,
-    };
+    return {'nit': nit, 'name': name, 'address': address, 'sector': sector};
   }
 
   factory CompanyModel.fromFirestore(Map<String, dynamic> data) {
@@ -45,7 +39,7 @@ class CompanyModel {
       name: data['name'] as String? ?? '',
       address: data['address'] as String? ?? '',
       sector: data['sector'] as String? ?? '',
-      pendingSync: false as bool? ?? false,
+      pendingSync: data['pendingSync'] as bool? ?? false,
     );
   }
 }

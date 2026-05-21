@@ -62,7 +62,7 @@ class OfferModel {
       position: data['position'] as String? ?? '',
       salary: data['salary'] as String? ?? '',
       requirements: data['requirements'] as String? ?? '',
-      pendingSync: false as bool? ?? false,
+      pendingSync: data['pendingSync'] as bool? ?? false,
     );
   }
 }

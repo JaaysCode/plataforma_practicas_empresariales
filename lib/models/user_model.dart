@@ -30,12 +30,7 @@ class UserModel {
   }
 
   Map<String, dynamic> toFirestore() {
-    return {
-      'cc': cc,
-      'name': name,
-      'lastName': lastName,
-      'email': email,
-    };
+    return {'cc': cc, 'name': name, 'lastName': lastName, 'email': email};
   }
 
   factory UserModel.fromFirestore(Map<String, dynamic> data) {
@@ -44,7 +39,7 @@ class UserModel {
       name: data['name'] as String? ?? '',
       lastName: data['lastName'] as String? ?? '',
       email: data['email'] as String? ?? '',
-      pendingSync: false as bool? ?? false,
+      pendingSync: data['pendingSync'] as bool? ?? false,
     );
   }
 }

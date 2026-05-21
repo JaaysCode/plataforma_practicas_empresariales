@@ -6,6 +6,7 @@ class OfferModel {
   final String position;
   final String salary;
   final String requirements;
+  final String status;
   final bool pendingSync;
 
   const OfferModel({
@@ -16,6 +17,7 @@ class OfferModel {
     required this.position,
     required this.salary,
     required this.requirements,
+    required this.status,
     required this.pendingSync,
   });
 
@@ -27,6 +29,7 @@ class OfferModel {
     String? position,
     String? salary,
     String? requirements,
+    String? status,
     bool? pendingSync,
   }) {
     return OfferModel(
@@ -37,6 +40,7 @@ class OfferModel {
       position: position ?? this.position,
       salary: salary ?? this.salary,
       requirements: requirements ?? this.requirements,
+      status: status ?? this.status,
       pendingSync: pendingSync ?? this.pendingSync,
     );
   }
@@ -49,6 +53,7 @@ class OfferModel {
       'description': description,
       'position': position,
       'salary': salary,
+      'status': status,
       'requirements': requirements,
     };
   }
@@ -62,6 +67,7 @@ class OfferModel {
       position: data['position'] as String? ?? '',
       salary: data['salary'] as String? ?? '',
       requirements: data['requirements'] as String? ?? '',
+      status: data['status'] as String? ?? '',
       pendingSync: data['pendingSync'] as bool? ?? false,
     );
   }

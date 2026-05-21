@@ -55,6 +55,7 @@ class OfferModel {
       'salary': salary,
       'status': status,
       'requirements': requirements,
+      'pendingSync': pendingSync,
     };
   }
 

@@ -7,15 +7,20 @@ class OfferService {
       FirebaseFirestore.instance.collection('offers');
 
   Future<List<OfferModel>> getOffers() async {
-    final snapshot = await _offerCollection.get();
-    final offers = <OfferModel>[];
+    final snapshot = await _offerCollection
+        .where('status', isEqualTo: 'active')
+        .get();
 
-    for (final doc in snapshot.docs) {
-      if (doc.data().containsKey('status') && doc.data()['status'] == 'active') {
-        offers.add(OfferModel.fromFirestore(doc.data()));
-      }
+    return snapshot.docs
+        .map((doc) => OfferModel.fromFirestore(doc.data()))
+        .toList();
+  }
+
+  Future<void> addOffer(OfferModel offer) async {
+    if (offer.id.trim().isEmpty) {
+      throw ArgumentError('Offer id must not be empty');
     }
 
-    return offers;
+    await _offerCollection.doc(offer.id).set(offer.toFirestore());
   }
 }

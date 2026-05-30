@@ -3,6 +3,7 @@ class PostulationModel {
   final String userId;
   final String offerId;
   final String status;
+  final String? rejectionReason;
   final DateTime appliedAt;
   final bool pendingSync;
 
@@ -11,6 +12,7 @@ class PostulationModel {
     required this.userId,
     required this.offerId,
     required this.status,
+    this.rejectionReason,
     required this.appliedAt,
     required this.pendingSync,
   });
@@ -20,6 +22,7 @@ class PostulationModel {
     String? userId,
     String? offerId,
     String? status,
+    String? rejectionReason,
     DateTime? appliedAt,
     bool? pendingSync,
   }) {
@@ -28,6 +31,7 @@ class PostulationModel {
       userId: userId ?? this.userId,
       offerId: offerId ?? this.offerId,
       status: status ?? this.status,
+      rejectionReason: rejectionReason ?? this.rejectionReason,
       appliedAt: appliedAt ?? this.appliedAt,
       pendingSync: pendingSync ?? this.pendingSync,
     );
@@ -39,6 +43,7 @@ class PostulationModel {
       'userId': userId,
       'offerId': offerId,
       'status': status,
+      if (rejectionReason != null) 'rejectionReason': rejectionReason,
       'appliedAt': appliedAt.toIso8601String(),
     };
   }
@@ -49,6 +54,7 @@ class PostulationModel {
       userId: data['userId'] as String? ?? '',
       offerId: data['offerId'] as String? ?? '',
       status: data['status'] as String? ?? '',
+      rejectionReason: data['rejectionReason'] as String?,
       appliedAt: DateTime.parse(data['appliedAt'] as String? ?? ''),
       pendingSync: data['pendingSync'] as bool? ?? false,
     );
